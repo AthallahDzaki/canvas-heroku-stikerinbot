@@ -1,6 +1,6 @@
 const { createCanvas, loadImage } = require('canvas');
 
-drawImageWithTint(ctx, image, color, x, y, width, height) {
+function drawImageWithTint(ctx, image, color, x, y, width, height) {
     const { fillStyle, globalAlpha } = ctx;
     ctx.fillStyle = color;
     ctx.drawImage(image, x, y, width, height);
