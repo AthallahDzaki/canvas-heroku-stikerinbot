@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = 3000
 
 app.get('/generatetbc', async (req, res) => {
     if(!req.query.avatarurl || req.query.avatarurl == "")
@@ -70,6 +69,6 @@ app.get('/generatebye', async (req, res) => {
     res.end( await wel.toBuffer());
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Page Has Run On The Page`)
 })
