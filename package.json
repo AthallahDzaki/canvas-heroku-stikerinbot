@@ -1,0 +1,28 @@
+{
+  "name": "canvas-heroku",
+  "version": "1.0.0",
+  "description": "Canvas Web For stikerin BOT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AthallahDzaki/canvas-heroku.git"
+  },
+  "keywords": [
+    "canvas",
+    "nodejs",
+    "wa-bot",
+    "baileys"
+  ],
+  "author": "AthallahDzaki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AthallahDzaki/canvas-heroku/issues"
+  },
+  "homepage": "https://github.com/AthallahDzaki/canvas-heroku#readme",
+  "dependencies": {
+    "canvas": "^2.8.0"
+  }
+}
