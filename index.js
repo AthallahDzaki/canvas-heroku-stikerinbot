@@ -21,10 +21,12 @@ app.get('/generatewelcome', async (req, res) => {
         return res.status(500).send('Need groupname\n\nquery = groupname');
     if(!req.query.grouplength || req.query.grouplength == '')
         return res.status(500).send('Need grouplength\n\nquery = grouplength');
-    if(!req.query.avatarurl || req.query.avatarurl == '')
-        return res.status(500).send('Need avatar URL\n\nquery = avatarurl');
-    if(!req.query.groupavatar || req.query.groupavatar == '')
-        return res.status(500).send('Need Group Avatar URL\n\nquery = groupavatar');
+    let username = req.query.username, 
+        groupname = req.query.groupname, 
+        grouplength = req.query.grouplength, 
+        groupavatar = req.query.groupavatar || 'https://telegra.ph/file/24fa902ead26340f3df2c.png',
+        avatarurl = req.query.avatarurl || 'https://telegra.ph/file/24fa902ead26340f3df2c.png',
+        bg = req.query.bg || 'https://i.ibb.co/KhtRxwZ/dark.png'
     res.writeHead(
         200,
         {
@@ -33,12 +35,12 @@ app.get('/generatewelcome', async (req, res) => {
     );
     const knights = require('knights-canvas')
     let wel = await new knights.Welcome()
-                .setUsername(req.query.username)
-                .setGuildName(req.query.groupname)
-                .setGuildIcon(req.query.groupavatar)
-                .setMemberCount(req.query.grouplength)
-                .setAvatar(req.query.avatarurl)
-                .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
+                .setUsername(username)
+                .setGuildName(groupname)
+                .setGuildIcon(groupavatar)
+                .setMemberCount(grouplength)
+                .setAvatar(avatarurl)
+                .setBackground(bg)
                 .toAttachment()
     res.end( await wel.toBuffer());
 })
@@ -51,10 +53,12 @@ app.get('/generatebye', async (req, res) => {
         return res.status(500).send('Need groupname\n\nquery = groupname');
     if(!req.query.grouplength || req.query.grouplength == '')
         return res.status(500).send('Need grouplength\n\nquery = grouplength');
-    if(!req.query.avatarurl || req.query.avatarurl == '')
-        return res.status(500).send('Need avatar URL\n\nquery = avatarurl');
-    if(!req.query.groupavatar || req.query.groupavatar == '')
-        return res.status(500).send('Need Group Avatar URL\n\nquery = groupavatar');
+    let username = req.query.username, 
+        groupname = req.query.groupname, 
+        grouplength = req.query.grouplength, 
+        groupavatar = req.query.groupavatar || 'https://telegra.ph/file/24fa902ead26340f3df2c.png',
+        avatarurl = req.query.avatarurl || 'https://telegra.ph/file/24fa902ead26340f3df2c.png',
+        bg = req.query.bg || 'https://i.ibb.co/KhtRxwZ/dark.png'
     res.writeHead(
         200,
         {
@@ -63,16 +67,16 @@ app.get('/generatebye', async (req, res) => {
     );
     const knights = require('knights-canvas')
     let wel = await new knights.Goodbye()
-                .setUsername(req.query.username)
-                .setGuildName(req.query.groupname)
-                .setGuildIcon(req.query.groupavatar)
-                .setMemberCount(req.query.grouplength)
-                .setAvatar(req.query.avatarurl)
-                .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
+                .setUsername(username)
+                .setGuildName(groupname)
+                .setGuildIcon(groupavatar)
+                .setMemberCount(grouplength)
+                .setAvatar(avatarurl)
+                .setBackground(bg)
                 .toAttachment()
     res.end( await wel.toBuffer());
 })
-
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Page Has Run On The Page`)
+let port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Page Has Run On Port ${port}`);
 })
