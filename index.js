@@ -23,6 +23,8 @@ app.get('/generatewelcome', async (req, res) => {
         return res.status(500).send('Need grouplength\n\nquery = grouplength');
     if(!req.query.avatarurl || req.query.avatarurl == '')
         return res.status(500).send('Need avatar URL\n\nquery = avatarurl');
+    if(!req.query.groupavatar || req.query.groupavatar == '')
+        return res.status(500).send('Need Group Avatar URL\n\nquery = groupavatar');
     res.writeHead(
         200,
         {
@@ -33,7 +35,7 @@ app.get('/generatewelcome', async (req, res) => {
     let wel = await new knights.Welcome()
                 .setUsername(req.query.username)
                 .setGuildName(req.query.groupname)
-                .setGuildIcon('https://i.ibb.co/jr9Nh6Q/Thumb.jpg')
+                .setGuildIcon(req.query.groupavatar)
                 .setMemberCount(req.query.grouplength)
                 .setAvatar(req.query.avatarurl)
                 .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
@@ -51,6 +53,8 @@ app.get('/generatebye', async (req, res) => {
         return res.status(500).send('Need grouplength\n\nquery = grouplength');
     if(!req.query.avatarurl || req.query.avatarurl == '')
         return res.status(500).send('Need avatar URL\n\nquery = avatarurl');
+    if(!req.query.groupavatar || req.query.groupavatar == '')
+        return res.status(500).send('Need Group Avatar URL\n\nquery = groupavatar');
     res.writeHead(
         200,
         {
@@ -61,7 +65,7 @@ app.get('/generatebye', async (req, res) => {
     let wel = await new knights.Goodbye()
                 .setUsername(req.query.username)
                 .setGuildName(req.query.groupname)
-                .setGuildIcon('https://i.ibb.co/jr9Nh6Q/Thumb.jpg')
+                .setGuildIcon(req.query.groupavatar)
                 .setMemberCount(req.query.grouplength)
                 .setAvatar(req.query.avatarurl)
                 .setBackground("https://i.ibb.co/KhtRxwZ/dark.png")
